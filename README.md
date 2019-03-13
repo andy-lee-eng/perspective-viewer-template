@@ -58,3 +58,8 @@ To apply the theme at runtime, include the theme css file:
 ```html
 <link rel='stylesheet' href="/myplugin.plugin.dark.css" is="custom-style">
 ```
+
+## Resizing
+
+The template element in `/src/js/plugin/template.js` has a `resize()` function that gets called by `perspective-viewer` when the container is resized. If you need to re-render during a resize event, then add something here.
+

@@ -25,6 +25,6 @@ class TemplateElement extends HTMLElement {
     }
 
     resize() {
-        
+        // Called by perspective-viewer when the container is resized
     }
 }
