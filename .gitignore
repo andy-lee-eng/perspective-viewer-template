@@ -1,0 +1,5 @@
+node_modules
+/build
+
+# Visual Studio Code configuration
+/jsconfig.json

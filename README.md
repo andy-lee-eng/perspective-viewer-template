@@ -30,7 +30,7 @@ function myView(container, settings) {
 `container` is a DOM node to render the view into
 `settings` is a JSON object containing the current view and data:
 
-```json
+```javascript
   {
     row_pivots,
     aggregates,
