@@ -13,6 +13,13 @@ This project is a template for creating new viewer plugins for [Perspective](htt
   yarn start
 ```
 
+or with npm:
+
+```
+  npm install
+  npm run start
+```
+
 ## Creating Views
 
 The template project comes with an example View in `/src/js/views/view-1.js`, which renders a basic table of the data.
