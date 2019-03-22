@@ -8,17 +8,16 @@
  */
 
 function view1(container, settings) {
-  // Render the view of this data
+    // Render the view of this data
 
-  const cols = row => Object.keys(row)
-      .filter(key => key !== "__ROW_PATH__")
-      .map(c => `<td>${row[c]}</td>`);
+    const cols = row =>
+        Object.keys(row)
+            .filter(key => key !== "__ROW_PATH__")
+            .map(c => `<td>${row[c]}</td>`);
 
-  const rows = data => data.map((r, i) => 
-    `<tr><th>${r.__ROW_PATH__ ? r.__ROW_PATH__.join(",") : i}</th>${cols(r).join("")}</tr>`
-  );
+    const rows = data => data.map((r, i) => `<tr><th>${r.__ROW_PATH__ ? r.__ROW_PATH__.join(",") : i}</th>${cols(r).join("")}</tr>`);
 
-  container.innerHTML = `<table>${rows(settings.data).join("")}</table>`;
+    container.innerHTML = `<table>${rows(settings.data).join("")}</table>`;
 }
 view1.plugin = {
     type: "template_view_1",

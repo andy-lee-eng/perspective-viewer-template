@@ -70,7 +70,7 @@ function deleteView() {
 function getElement(div) {
     this[PRIVATE] = this[PRIVATE] || {};
     if (!this[PRIVATE].view) {
-      this[PRIVATE].view = document.createElement(name);
+        this[PRIVATE].view = document.createElement(name);
     }
 
     if (!document.body.contains(this[PRIVATE].view)) {
