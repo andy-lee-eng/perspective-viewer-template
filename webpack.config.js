@@ -77,7 +77,8 @@ module.exports = {
         path.resolve(__dirname, "node_modules/@jpmorganchase/perspective/build"),
         path.resolve(__dirname, "node_modules/@jpmorganchase/perspective-viewer/build"),
         path.resolve(__dirname, "node_modules/@jpmorganchase/perspective-viewer-highcharts/build"),
-        path.resolve(__dirname, "node_modules/@jpmorganchase/perspective-viewer-hypergrid/build")
+        path.resolve(__dirname, "node_modules/@jpmorganchase/perspective-viewer-hypergrid/build"),
+        path.resolve(__dirname, "node_modules/@jpmorganchase/perspective-viewer-d3fc/build")
       ],
       proxy: {
             "/template.plugin.js": {
