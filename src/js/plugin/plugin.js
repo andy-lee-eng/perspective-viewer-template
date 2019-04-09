@@ -33,28 +33,12 @@ views.forEach(view => {
 
 function drawView(viewEntryPoint) {
     return async function(el, view, task) {
-        // FIXME: super tight coupling to private viewer methods
-        const aggregates = this._get_view_aggregates();
-        const hidden = this._get_view_hidden(aggregates);
-
-        const [schema, data, config] = await Promise.all([this._table.schema(), view.to_json(), view.get_config()]);
+        const [tschema, schema, data, config] = await Promise.all([this._table.schema(), view.schema(), view.to_json(), view.get_config()]);
         if (task.cancelled) {
             return;
         }
 
-        const row_pivots = config.row_pivot;
-        const col_pivots = config.column_pivot;
-        const filter = config.filter;
-
-        getElement.call(this, el).render(viewEntryPoint, {
-            row_pivots,
-            aggregates,
-            col_pivots,
-            filter,
-            hidden,
-            schema,
-            data
-        });
+        getElement.call(this, el).render(viewEntryPoint, Object.assign({schema, tschema, data}, config));
     };
 }
 
