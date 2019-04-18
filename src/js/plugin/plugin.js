@@ -27,7 +27,9 @@ views.forEach(view => {
         ...view.plugin,
         create: drawView(view),
         resize: resizeView,
-        delete: deleteView
+        delete: deleteView,
+        save,
+        restore
     });
 });
 
@@ -54,16 +56,34 @@ function deleteView() {
     }
 }
 
-function getElement(div) {
+function save() {
+    if (this[PRIVATE] && this[PRIVATE].chart) {
+        const perspective_d3fc_element = this[PRIVATE].chart;
+        return perspective_d3fc_element.getSettings();
+    }
+}
+
+function restore(settings) {
+    const perspective_d3fc_element = getOrCreatePlugin.call(this);
+    perspective_d3fc_element.setSettings(settings);
+}
+
+function getOrCreatePlugin() {
     this[PRIVATE] = this[PRIVATE] || {};
     if (!this[PRIVATE].view) {
         this[PRIVATE].view = document.createElement(name);
     }
 
-    if (!document.body.contains(this[PRIVATE].view)) {
+    return this[PRIVATE].view;
+}
+
+function getElement(div) {
+    const perspective_d3fc_element = getOrCreatePlugin.call(this);
+
+    if (!document.body.contains(perspective_d3fc_element)) {
         div.innerHTML = "";
-        div.appendChild(this[PRIVATE].view);
+        div.appendChild(perspective_d3fc_element);
     }
 
-    return this[PRIVATE].view;
+    return perspective_d3fc_element;
 }

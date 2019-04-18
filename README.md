@@ -26,16 +26,17 @@ The template project comes with an example View in `/src/js/views/view-1.js`, wh
 
 New views should be added to the list in `/src/js/views/views.js`.
 
-A view is a function that takes a `container` and a `settings` parameter:
+A view is a function that takes `container`, `config` and `settings` parameters:
 
 ```javascript
-function myView(container, settings) {
-  // Render view of settings into container
+function myView(container, config, settings) {
+  // Render view of config into container
+  // Use settings object for persisting user settings
 }
 ```
 
 `container` is a DOM node to render the view into
-`settings` is a JSON object containing the current view and data:
+`config` is a JSON object containing the current view and data:
 
 ```javascript
   {
@@ -47,6 +48,8 @@ function myView(container, settings) {
     data
   }
 ```
+
+`settings` is a JSON object that can be used to persist user settings. When the `perspective-viewer` `save()` method is called, the plugin's `settings` object will be serialised along with the rest of the configuration. It is restored when `perspective-viewer` `restore()` is called.
 
 ## Styling with Less and Themes
 

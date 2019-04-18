@@ -15,16 +15,33 @@ const template = `<template id="${name}"><div id="container"></div></template>`;
 
 @bindTemplate(template, style) // eslint-disable-next-line no-unused-vars
 class TemplateElement extends HTMLElement {
+    constructor() {
+        super();
+
+        // Serialised user settings for this plugin
+        this._settings = {};
+    }
+
     connectedCallback() {
         this._container = this.shadowRoot.querySelector("#container");
     }
 
-    render(view, settings) {
+    render(view, config) {
         this._container.innerHTML = "";
-        view(this._container, settings);
+        view(this._container, config, this._settings);
     }
 
     resize() {
         // Called by perspective-viewer when the container is resized
+    }
+
+    getSettings() {
+        // Called when saving user settings
+        return this._settings;
+    }
+
+    setSettings(settings) {
+        // Called when restoring user settings
+        this._settings = settings || {};
     }
 }
