@@ -9,6 +9,7 @@
 
 function view1(container, config, settings) {
     // Render the view of this data
+    container.innerHTML = "";
 
     const cols = row =>
         Object.keys(row)
